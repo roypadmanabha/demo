@@ -863,27 +863,15 @@ padding: 6px;
 <div class="contact-info container">
   <button class="contact-btn" data-target="contact" id="contactBtn" style="color: yellow; font-weight: 700;"  onclick="alert('Click `OK` if you agree to pay for our services, as video editing is not free.')">Contact Us</button>
 
-  <button class="contact-btn" data-target="terms" 
-  onclick="
-    this.innerText = 'Loading...';
-    this.disabled = true;
-    setTimeout(() => {
-      window.location.href = 'tnc.html';
-    }, 2000);
-  ">
-  Terms & Conditions
-</button>
+   <button class="contact-btn" data-target="contact" id="contactBtn" style="color: yellow; font-weight: 700;"  onclick="alert('Click `OK` if you agree to pay for our services, as video editing is not free.')">Contact Us</button>
+
+  <button class="contact-btn" data-target="terms" onclick="window.location.href='tnc.html'">Terms & Conditions</button>
+
+  <button class="contact-btn" data-target="privacy" onclick="window.location.href='policy.html'">Privacy Policy</button>
 
 
-<button class="contact-btn" data-target="privacy" 
-onclick="
-  this.innerText = 'Loading...';
-  this.disabled = true;
-  setTimeout(() => {
-    window.location.href = 'policy.html';
-  }, 2000);
-">
-Privacy Policy
+
+
 </button>
 
 </div>
