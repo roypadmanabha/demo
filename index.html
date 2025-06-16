@@ -195,13 +195,13 @@
   }
 
   #brand {
-  font-size: 35px;
+  font-size: 32px;
 }
 
 /* For screens less than or equal to 680px */
 @media (max-width: 680px) {
   #brand {
-    font-size: 23px;
+    font-size: 20px;
   }
 }
 
@@ -491,8 +491,8 @@ padding: 6px;
 
 <nav class="navbar">
   <div class="brand-wrapper" id="brand">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5I-LyW9aEufGed1suUqzi6eoGmm0KlsUu1w&s" alt="PRAYUKT logo" class="logo" draggable="false" />
-    <span id="brand">BRAND NAME</span>
+    <img src="logo.png" alt="brand logo" class="logo" draggable="false" />
+    <span id="brand">Padmanabha Roy</span>
   </div>
   <div class="toggle-mode" id="modeToggle" aria-label="Toggle dark/light mode" role="button" tabindex="0">
     
@@ -625,14 +625,14 @@ padding: 6px;
       <!-- BASIC PLAN -->
       <div class="subscription-card" style="cursor: pointer; position: relative; flex: 1 1 48%; aspect-ratio: 16/9; background: url('vn.png') center/cover no-repeat; border-radius: 10px; box-shadow: 0 8px 16px rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; z-index: 1; padding: 20px;">
         <h3 style="font-size: 3rem; font-weight: 700; z-index: 2;">Basic</h3>
-        <p style="font-size: 1.1rem; z-index: 2;">Ideal for your reels — timely videos to boost your reach!</p>
+        <p style="font-size: 1.1rem; z-index: 2;"><strong>Ideal for your reels — timely videos to boost your reach!</strong></p>
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 60, 23, 0.4); border-radius: 10px; z-index: -1;"></div>
       </div>
   
       <!-- ADVANCED PLAN -->
       <div class="subscription-card" style="cursor: pointer; position: relative; flex: 1 1 48%; aspect-ratio: 16/9; background: url('prsnl.png') center/cover no-repeat; border-radius: 10px; box-shadow: 0 8px 16px rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; z-index: 1; padding: 20px;">
         <h3 style="font-size: 3rem; font-weight: 700; z-index: 2;">Advanced</h3>
-        <p style="font-size: 1.1rem; z-index: 2;">For brands/professionals, a monthly deal with 10 to 20% OFF!</p>
+        <p style="font-size: 1.1rem; z-index: 2;"><strong>For brands/professionals, a monthly deal with 10 to 20% OFF!</strong></p>
         
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 68, 7, 0.4); border-radius: 10px; z-index: -1;"></div>
       </div>
@@ -863,7 +863,6 @@ padding: 6px;
 <div class="contact-info container">
   <button class="contact-btn" data-target="contact" id="contactBtn" style="color: yellow; font-weight: 700;"  onclick="alert('Click `OK` if you agree to pay for our services, as video editing is not free.')">Contact Us</button>
 
-   
   <button class="contact-btn" data-target="terms" onclick="window.location.href='tnc.html'">Terms & Conditions</button>
 
   <button class="contact-btn" data-target="privacy" onclick="window.location.href='policy.html'">Privacy Policy</button>
@@ -871,10 +870,8 @@ padding: 6px;
 
 
 
-</button>
-
 </div>
-</br></br>
+</br>
 
 
 
@@ -907,7 +904,7 @@ padding: 6px;
 
 .contact-info .contact-btn:hover {
   background-color: #17202A;
-  color:gold;
+  color:yellow;
 
   transform: scale(1.03);
 }
@@ -1007,7 +1004,7 @@ function updateIcons() {
   if (body.classList.contains("dark")) {
     // Dark mode
     sunIcon.style.display = "block";
-    sunIcon.style.color =  "#17202A";
+    sunIcon.style.color =  "#172a18";
     moonIcon.style.display = "none";
 
     // Apply dark styles
