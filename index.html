@@ -1145,6 +1145,37 @@ updateIcons();
 </noscript>
 
 
+<style>
+  @media print {
+    body * {
+      visibility: hidden !important;
+      display: none !important;
+    }
+    body::before {
+      content: "🚫 THIS PAGE CAN'T BE PRINTED!";
+      visibility: visible !important;
+      display: block !important;
+      color: red;
+      font-weight: 900;
+      font-size: 3vw;
+      text-align: center;
+      margin-top: 50vh;
+      transform: translateY(-50%);
+    }
+  }
+</style>
+<script>
+  document.addEventListener('keydown', function (e) {
+    // Block Ctrl+P (Windows/Linux) and ⌘+P (Mac)
+    if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+      e.preventDefault();
+      alert('🚫 Printing is NOT ALLOWED!');
+    }
+  });
+</script>
+<script>
+  window.addEventListener("contextmenu", e => e.preventDefault());
+</script>
 
 
 
