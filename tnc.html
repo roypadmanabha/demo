@@ -12,41 +12,9 @@
     <title>T&C | BRAND NAME</title>
 
 
-    <script>
-      document.addEventListener('wheel', function(e) {
-        if (e.ctrlKey) {
-          e.preventDefault();
-        }
-      }, { passive: false });
-    
-      document.addEventListener('keydown', function(e) {
-        if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '=')) {
-          e.preventDefault();
-        }
-      });
-    </script>
+  
 
 
-
-<style>
-
-* {
-  touch-action: manipulation;
-  -ms-touch-action: manipulation;
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: transparent;
-  zoom: 1;
-  pointer-events: auto;
-}
-</style>
-
-
-    
 
     <style>
         * {
@@ -125,7 +93,22 @@
 
 
 
+<style>
 
+* {
+  touch-action: manipulation;
+  -ms-touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  zoom: 1;
+  pointer-events: auto;
+}
+</style>
 
 
 
@@ -191,7 +174,7 @@ p {
   }
 
   #xyz button{
-    padding:3px;
+    padding:10px;
  
   }
 
@@ -283,6 +266,56 @@ onclick="window.location.href='index.html'" id="abc">Return to Homepage</button>
 ">
   &copy; 2025 BRAND NAME. All rights reserved.
 </div>
+
+<style>
+  @media print {
+    body * {
+      visibility: hidden !important;
+      display: none !important;
+    }
+    body::before {
+      content: "🚫 THIS PAGE CAN'T BE PRINTED!";
+      visibility: visible !important;
+      display: block !important;
+      color: red;
+      font-weight: 900;
+      font-size: 3vw;
+      text-align: center;
+      margin-top: 50vh;
+      transform: translateY(-50%);
+    }
+  }
+</style>
+<script>
+  document.addEventListener('keydown', function (e) {
+    // Block Ctrl+P (Windows/Linux) and ⌘+P (Mac)
+    if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+      e.preventDefault();
+      alert('🚫 Printing is NOT ALLOWED!');
+    }
+  });
+</script>
+<script>
+  window.addEventListener("contextmenu", e => e.preventDefault());
+</script>
+
+
+
+<script>
+  document.addEventListener('wheel', function(e) {
+    if (e.ctrlKey) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '=')) {
+      e.preventDefault();
+    }
+  });
+</script>
+
+  
 
 
 
