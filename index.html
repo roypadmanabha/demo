@@ -529,14 +529,127 @@ padding: 6px;
 <nav class="navbar">
   <div class="brand-wrapper" id="brand">
     <img src="logo.png"  class="logo" draggable="false" />
-    <span id="brand">Edistiq</span>
+    <span id="brand">Edistiq</span> 
   </div>
   <div class="toggle-mode" id="modeToggle" aria-label="Toggle dark/light mode" role="button" tabindex="0">
     
     <i class="fa-solid fa-sun" id="sunIcon"></i>
     <i class="fa-solid fa-moon" id="moonIcon" style="display:none;"></i>
   </div>
+
 </nav>
+
+<br>
+
+
+
+
+<div id="vdo-cvr" style="position:relative; width:100%;margin:0 auto; overflow:hidden; max-width:1201px;">
+
+         <video playsinline id="vid" style="width:100%;height:auto;transform:rotate(0deg);object-fit:cover;display:block; border-radius: 10px;"
+         src="media/100k.mp4"
+         preload="auto"
+         
+         loop
+         playsinline
+         preload="auto"
+         draggable="false"
+         controls
+         controlsList="nodownload nofullscreen noremoteplayback noplaybackrate nodownload"
+         disablePictureInPicture
+         autoplay muted
+         playsinline
+         >
+        </video>
+
+        
+
+</div>
+
+
+
+<style>
+  @media screen and (min-width: 300px) and (max-width: 375px) {
+#vdo-cvr{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+  }
+
+  @media screen and (min-width: 376px) and (max-width: 425px) {
+#vdo-cvr{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+  }
+
+  @media screen and (min-width: 426px) and (max-width: 768px) {
+#vdo-cvr{
+  padding-left: 4.5%;
+  padding-right: 4.5%;
+}
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+#vdo-cvr{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+  }
+
+  @media screen and (min-width: 1025px) and (max-width: 1292px) {
+#vdo-cvr{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+  }
+</style>
+
+
+
+
+
+
+<script>
+  // Optional: Ensure video starts with audio (muted=false)
+  const vid = document.getElementById("vid");
+  vid.muted = false;
+  vid.volume = 1.0;
+
+  // Adjust height dynamically for 2.35:1 ratio
+  function setAspectRatio() {
+    const wrapper = vid.parentElement;
+    const width = wrapper.offsetWidth;
+    const height = width / 2.35;
+    vid.style.height = height + "px";
+  }
+
+  setAspectRatio();
+  window.addEventListener('resize', setAspectRatio);
+
+
+  const vid = document.getElementById("vid");
+  const playBtn = document.getElementById("playBtn");
+
+  let lastTime = 0;
+  vid.addEventListener('timeupdate', () => {
+    if (Math.abs(vid.currentTime - lastTime) > 1) {
+      vid.currentTime = lastTime; // Disable seeking
+    } else {
+      lastTime = vid.currentTime;
+    }
+  });
+
+  playBtn.addEventListener("click", () => {
+    vid.play();
+    playBtn.style.display = "none";
+  });
+</script>
+
+
+
+<br>
+
 
 <section class="welcome-text container">
     <b id="textx">Struggling to turn your clips into a killer edit? </b>
@@ -545,10 +658,10 @@ padding: 6px;
 </section>
 
 
+<br>
 
 
-
-
+<!-- 
 
 <div class="about-section">
   <div class="about-box" id="why-us">
@@ -568,7 +681,57 @@ padding: 6px;
 
 </div>
 </div>
+</div> -->
+
+
+
+<div class="about-section">
+  <div class="about-box" id="why-us">
+    <div class="about-text">
+      <p id="about-text-content">
+       
+       
+      </p>
+    </div>
+  </div>
 </div>
+
+<script>
+  (function() {
+    var textContainer = document.getElementById("about-text-content");
+    var fullText = `
+      <h3 style="padding-bottom: 5px;">Why Edistiq?</h3>
+      Edistiq is your one-stop solution for high-quality, professional video editing. 
+      We understand that not everyone has the time or skills to edit their own videos, and that’s where we come in. 
+      Whether it’s a personal memory, a brand reel, or a trending clip, we turn your raw footage into polished, eye-catching content. 
+      With attention to detail, creative touches, and a deep understanding of social media trends, Edistiq ensures your videos stand out and leave a lasting impression. 
+      Just share your clips, we'll handle the rest.
+    `;
+
+    var mobileText = `
+      <h3 style="padding-bottom: 5px;">Why Edistiq?</h3>
+      Edistiq delivers high-quality, professional video editing with creative finesse, turning your raw clips into standout content tailored for memories, brands, or trends—just send your footage, we’ll handle the rest.
+    `;
+
+    textContainer.innerHTML = (window.innerWidth > 768) ? fullText : mobileText;
+
+    // Optional: Add a resize listener if you want it to change on window resize too
+    window.addEventListener("resize", function() {
+      textContainer.innerHTML = (window.innerWidth > 768) ? fullText : mobileText;
+    });
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
 
 
 <br>
@@ -585,16 +748,8 @@ padding: 6px;
 <p>
 
   
-  
-  
 
-
-  Here are a few highlights from the videos I’ve already created and shared, each with strong engagement.
-  These cover all major content categories including festivals, travel, minimalism, and promotions. 
-  Take a look - you’re sure to love them!
-
-
-
+  Here are some highlights from videos I’ve created and shared, each gaining strong engagement across categories like festivals, travel, minimalism, and promotions. Check them out—you’re sure to love them!
 
 </p>
 
@@ -609,8 +764,8 @@ padding: 6px;
 
 <div class="grid-4 container" id="portfolioGrid">
   <div class="video-card" style="border: .5px solid white;">
-    <video
-      src="festival.mp4"
+    <video playsinline
+      src="/Users/padmanabharoy/Downloads/My Brand/media/festival.mp4"
       autoplay
       muted
       loop
@@ -626,8 +781,8 @@ padding: 6px;
   </div>
 
   <div class="video-card" style="border: .5px solid white;">
-    <video
-      src="travel.mp4"
+    <video playsinline
+      src="/Users/padmanabharoy/Downloads/My Brand/media/travel.mp4"
       autoplay
       muted
       loop
@@ -643,8 +798,8 @@ padding: 6px;
   </div>
 
   <div class="video-card" style="border: .5px solid white;">
-    <video
-      src="mini.mp4"
+    <video playsinline
+      src="/Users/padmanabharoy/Downloads/My Brand/media/mini.mp4"
       autoplay
       muted
       loop
@@ -660,8 +815,8 @@ padding: 6px;
   </div>
 
   <div class="video-card" style="border: .5px solid white;">
-    <video
-      src="promo.mp4"
+    <video playsinline
+      src="/Users/padmanabharoy/Downloads/My Brand/media/promo.mp4"
       autoplay
       muted
       loop
@@ -725,8 +880,8 @@ padding: 6px;
   <div class="about-box" id="why-us">
 <div class="about-text">
 <p>
-  Our range of professional services includes high-quality video editing for various content types, precise and polished podcast editing to enhance audio clarity and flow, strategic promotional content creation to boost brand visibility, and customized promo shoots designed to capture impactful visuals for marketing and social media campaigns.
-</p>
+  Our services include polished video editing, seamless podcast enhancement, engaging promotional content, and tailored shoots—crafted to elevate brand visibility, storytelling, and impact across marketing and social platforms.
+ </p>
 
 </div>
 </div>
@@ -742,16 +897,16 @@ padding: 6px;
 
 
 
-  <div class="text-grid editing" style="background-image: linear-gradient(rgba(54, 60, 10, 0.4), rgba(0, 238, 255, 0.282)), url('prsnl.png')">
+  <div class="text-grid editing" style="background-image: linear-gradient(rgba(54, 60, 10, 0.4), rgba(0, 238, 255, 0.282)), url('media/prsnl.png')">
     <h4 style="background-color:skyblue ; color:rgb(0, 37, 47) ;  padding: 5px; border-radius: 2px;">Podcast Editing</h4>
   </div>
 
 
-  <div class="text-grid editing" style="background-image: linear-gradient(rgba(0, 0, 0, 0.347), rgba(85, 0, 255, 0.279)), url('promotion.png')">
+  <div class="text-grid editing" style="background-image: linear-gradient(rgba(0, 0, 0, 0.347), rgba(85, 0, 255, 0.279)), url('media/promotion.png')">
     <h4 style="background-color: rgb(213, 172, 255); color:rgb(25, 0, 59); padding: 5px; border-radius: 2px;">Promotions</h4>
   </div>
 
-  <div class="text-grid editing" style="background-image:linear-gradient(rgba(56, 60, 10, 0.4), rgba(255, 106, 0, 0.285)), url('promo.png');">
+  <div class="text-grid editing" style="background-image:linear-gradient(rgba(56, 60, 10, 0.4), rgba(255, 106, 0, 0.285)), url('/Users/padmanabharoy/Downloads/My Brand/media/promo.png');">
     <h4 style="background-color: rgb(255, 180, 127); color:rgb(78, 32, 0); padding: 5px; border-radius: 2px;">Promo Shoot</h4>
   </div>
 </div>
@@ -788,11 +943,8 @@ padding: 6px;
 <div class="about-text">
 <p>
 
-  We’ve got exciting prices and plans for our customers - ranging from personal to commercial shoots and edits. We offer high-quality work at reasonable rates and are currently available for commercial shoots and promotional projects in select locations only.
-To know more, click the “Chat now” button below. You can also hire your own dedicated editor for any of your shoots, under specific terms and conditions.
-With our shoot and edit combo, the final result will exceed your expectations - high-quality, creative, and ready to go viral.
-Feel free to book your personal editor at a reasonable price and start vibing online with exciting content that stands out.
-
+  We offer exciting pricing plans for personal and commercial shoots, edits, and combos—high-quality, creative, and viral-ready. Book your dedicated editor now for standout content at a reasonable rate!
+ 
 </p>
 
 </div>
@@ -807,14 +959,14 @@ Feel free to book your personal editor at a reasonable price and start vibing on
             
 
   <!-- BASIC PLAN -->
-      <div class="subscription-card" style="cursor: pointer; position: relative; flex: 1 1 48%; aspect-ratio: 16/9; background: url('vn.png') center/cover no-repeat; border-radius: 10px; box-shadow: 0 8px 16px rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; z-index: 1; padding: 20px;">
+      <div class="subscription-card" style="cursor: pointer; position: relative; flex: 1 1 48%; aspect-ratio: 16/9; background: url('media/vn.png') center/cover no-repeat; border-radius: 10px; box-shadow: 0 8px 16px rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; z-index: 1; padding: 20px;">
         <h3 style="font-size: 3rem; font-weight: 700; z-index: 2;">Basic</h3>
         <p style="font-size: 1.1rem; z-index: 2;"><strong>Ideal for your reels — timely videos to boost your reach!</strong></p>
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 60, 23, 0.4); border-radius: 10px; z-index: -1;"></div>
       </div>
   
       <!-- ADVANCED PLAN -->
-      <div class="subscription-card" style="cursor: pointer; position: relative; flex: 1 1 48%; aspect-ratio: 16/9; background: url('prsnl.png') center/cover no-repeat; border-radius: 10px; box-shadow: 0 8px 16px rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; z-index: 1; padding: 20px;">
+      <div class="subscription-card" style="cursor: pointer; position: relative; flex: 1 1 48%; aspect-ratio: 16/9; background: url('media/prsnl.png') center/cover no-repeat; border-radius: 10px; box-shadow: 0 8px 16px rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; z-index: 1; padding: 20px;">
         <h3 style="font-size: 3rem; font-weight: 700; z-index: 2;">Premium</h3>
         <p style="font-size: 1.1rem; z-index: 2;"><strong>For brands/professionals, a monthly deal with 10 to 20% OFF!</strong></p>
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 68, 7, 0.4); border-radius: 10px; z-index: -1;"></div>
@@ -831,10 +983,7 @@ Feel free to book your personal editor at a reasonable price and start vibing on
   <div class="about-text">
   <p>
   
-    We offer two types of plans: a Basic Plan for personal use and a Premium Plan for commercial purposes, including brand projects and individual promotions.
-    The Basic Plan follows a pay-as-you-go model, perfect for occasional needs.
-    The Premium Plan is designed for bulk work and comes with special offers—the more projects you share with us, the greater the discounts you receive.
-    
+    We offer two plans: Basic for personal, pay-as-you-go use, and Premium for commercial bulk projects with increasing discounts and exclusive offers as your project volume grows.
     
   </p>
   
@@ -861,6 +1010,10 @@ Feel free to book your personal editor at a reasonable price and start vibing on
         flex: 1 1 100% !important;
       }
     }
+
+    @media (max-width: 768px) {
+      .subscription-card { height: 50%;
+    }}
   </style>
   
 
@@ -902,7 +1055,7 @@ Feel free to book your personal editor at a reasonable price and start vibing on
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
-    border: .1px solid lightgrey;
+    border: .1px solid rgb(188, 188, 188);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); ;
     border-radius: 15px;
   }
@@ -1026,8 +1179,8 @@ Feel free to book your personal editor at a reasonable price and start vibing on
 </style>
 
 <div class="about-section">
-  <div class="about-box" style="border: .5px solid gold;">
-    <img src="proy.jpg" alt="Roy" class="about-img" style="border-radius: 100%;"/>
+  <div class="about-box" style="border: 1px solid white;">
+    <img src="media/proy.jpg" alt="Roy" class="about-img" style="border-radius: 100%;"/>
     <div class="divider"></div>
     <div class="about-text">
       <p>
@@ -1122,7 +1275,7 @@ Feel free to book your personal editor at a reasonable price and start vibing on
 }
 
 .contact-info .contact-btn:hover {
-  background-color: #17202A;
+  background-color: #121212;
   color:yellow;
 
   transform: scale(1.03);
